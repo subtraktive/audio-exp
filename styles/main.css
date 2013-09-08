@@ -2,6 +2,40 @@
  	Main Style goes here
 \*========================*/
 
+body{
+
+}
+
 .wrapper{
 	
+}
+
+#keyboard{
+	width: 600px;
+	background: #ccc;
+	height: 200px;
+	padding: 20px;
+	margin-top: 40px;
+}
+
+.key{
+	float: left;
+	cursor: pointer;
+}
+
+.white-keys{
+	width: 13.7%;
+	background: #fff;
+	height: 200px;
+	box-shadow: 2px 2px 2px #666;
+	margin-right: 2px;
+}
+
+.black-keys{
+	width: 60%;
+	background: #333;
+	height: 150px;
+	position: relative;
+	top: 0;
+	left: 72%;
 }

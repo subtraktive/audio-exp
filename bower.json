@@ -1,0 +1,12 @@
+{
+  "name": "audio-exp",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "qwerty-hancock": "~0.2.0"
+  }
+}

@@ -4,7 +4,38 @@
 <link rel="stylesheet" href="styles/main.css">
 <body>
 	<canvas id="canvas" ></canvas>
-	<input type="range" id="oscPitch" min="50" max="5000" step="1" value="90">
+	<!-- <input type="range" id="volume" min="0" max="1" step=".1" value="1"> -->
+	<div class="wave-selector">
+		<span>Select the wave type:</span>
+		<select name="" id="wavetype">
+			<option value="0">Sine</option>
+			<option value="1">Square</option>
+			<option value="2">Sawtooth</option>
+			<option value="3">Triangle</option>
+		</select>
+	</div>
+	<div id="keyboard" class="clearfix">
+		<div class="white-keys key" data-note="C">
+			<div class="black-keys key" data-note="C#"></div>
+		</div>
+		<div class="white-keys key"	data-note="D">
+			<div class="black-keys key" data-note="D#"></div>
+		</div>
+		<div class="white-keys key"	data-note="E"></div>
+		<div class="white-keys key"	data-note="F">
+			<div class="black-keys key" data-note="F#"></div>
+		</div>
+		<div class="white-keys key"	data-note="G">
+			<div class="black-keys key" data-note="G#"></div>
+		</div>
+		<div class="white-keys key"	data-note="A">
+			<div class="black-keys key" data-note="A#"></div>
+		</div>
+		<div class="white-keys key"	data-note="B"></div>
+	</div>
+	
+	<script src="components/qwerty-hancock/qwerty-hancock.js"></script>
+	<script src="components/raphael/raphael.js"></script>
 	<script src="scripts/synth.js"></script>
 </body>
 
