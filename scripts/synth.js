@@ -74,18 +74,47 @@ window.onload = function(){
 		synth.oscillator.type = parseInt(wave);
 	}
 
+	var colorKeys = function(elm){
+		var val1 = parseInt(255*Math.random()),
+		val2 = parseInt(255*Math.random()),
+		val3 = parseInt(255*Math.random()),
+		val4 = 1*Math.random();
+		elm.setAttribute("style", "background-color:rgba("+val1+","+val2+","+val3+", 1);color:rgba("+val1+","+val2+","+val3+", 1)");
+		window.setTimeout(function(){
+			elm.removeAttribute("style");
+		}, 300)
+	}
+
+	var animateNotes = function(note, elm){
+		var noteNode = document.createElement('div');
+		noteNode.classList.add('note');
+		noteNode.innerHTML = note;
+		if(!elm.contains(noteNode)){
+			elm.appendChild(noteNode);
+			// elm.classList.remove('color');
+		}
+		window.setTimeout(function(){
+			elm.removeChild(noteNode);
+		}, 2000)
+	}
+
 	Array.prototype.slice.call(keys).forEach(function(key){
 		
 		key.onmousedown = function(event){
 			event.stopPropagation();
-			var note = this.dataset.note + '5';
+			var note = this.dataset.note + parseInt(8*Math.random());
 			synth.noteOn(note);
+			animateNotes(note, event.target);
+			colorKeys(event.target);
 			console.log("note played is " +note);
 		}
 
 		key.onmouseup = function(event){
 			event.stopPropagation();
+			var note = this.dataset.note + parseInt(8*Math.random());
 			synth.noteOff();
+			// event.target.removeAttribute('style');
+			//animateNotes(note, event.target);
 			console.log("note off called")
 		}
 
@@ -95,7 +124,9 @@ window.onload = function(){
 			var element = document.elementFromPoint(event.x, event.y);
 
 			if(element.dataset.note){
-				var note = element.dataset.note + '5';
+				var note = element.dataset.note + parseInt(8*Math.random());
+				//animateNotes(note, event.target);
+				//colorKeys(event.target);
 				synth.noteSlide(note);
 			}
 		}

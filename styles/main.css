@@ -21,6 +21,21 @@ body{
 .key{
 	float: left;
 	cursor: pointer;
+	position: relative;
+}
+
+.note{
+	position: absolute;
+	left: 25%;
+	top: 0%;
+	font-weight: bold;
+	font-size: 20px;
+	/*opacity: 1;*/
+	-webkit-animation: animatenote 2s 1 linear;
+	-moz-animation: animatenote 2s 1 linear;
+	-ms-animation: animatenote 2s 1 linear;
+	-o-animation: animatenote 2s 1 linear;
+	animation: animatenote 2s 1 linear;
 }
 
 .white-keys{
@@ -38,4 +53,14 @@ body{
 	position: relative;
 	top: 0;
 	left: 72%;
+	z-index: 2;
+}
+
+@-webkit-keyframes animatenote{
+	25% {top: -50%; opacity: .6; -webkit-transform: rotate(30deg);}
+	50% {top: -100%; opacity: .2;-webkit-transform: rotate(-30deg);}
+	75% {top: -150%; opacity: 0;-webkit-transform: rotate(30deg);}
+	100% {top: -200%; opacity: 0;-webkit-transform: rotate(-30deg);}
+	/*from {top: 0%;}
+	to {top: -200%;}*/
 }
