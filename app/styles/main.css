@@ -2,18 +2,27 @@
  	Main Style goes here
 \*========================*/
 
-body{
-
+body,
+html{
+    height: 100%;
+    margin: 0;
 }
 
-.wrapper{
+body{
+    background: rgba(26, 188, 156, 1.0);
+}
+
+/*Styles for main page */
+
+.main-wrapper{
 	
 }
 
+
+/*Styles for Synth page */
 #keyboard{
 	width: 600px;
 	background: #ccc;
-	height: 200px;
 	padding: 20px;
 	margin-top: 40px;
 }

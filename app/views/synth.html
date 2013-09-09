@@ -1,0 +1,39 @@
+<div class="synth-wrapper">
+    <div class="wave-selector">
+        <span>Select the wave type:</span>
+        <select name="" id="wavetype">
+            <option value="0">Sine</option>
+            <option value="1">Square</option>
+            <option value="2">Sawtooth</option>
+            <option value="3">Triangle</option>
+        </select>
+        <div class="slider">
+            <span>Cutoff</span>
+            <input type="range" min="0" max="1" step=".05" value=".7" id="cutoff-freq">
+        </div>
+        <div class="slider">
+            <span>Resonance</span>
+            <input type="range" min="0" max="1" step=".01" value=".4" id="filter-q">
+        </div>
+    </div>
+    <div id="keyboard" keyboard class="clearfix">
+        <div class="white-keys key" data-note="C">
+            <div class="black-keys key" data-note="C#"></div>
+        </div>
+        <div class="white-keys key" data-note="D">
+            <div class="black-keys key" data-note="D#"></div>
+        </div>
+        <div class="white-keys key" data-note="E"></div>
+        <div class="white-keys key" data-note="F">
+            <div class="black-keys key" data-note="F#"></div>
+        </div>
+        <div class="white-keys key" data-note="G">
+            <div class="black-keys key" data-note="G#"></div>
+        </div>
+        <div class="white-keys key" data-note="A">
+            <div class="black-keys key" data-note="A#"></div>
+        </div>
+        <div class="white-keys key" data-note="B"></div>
+    </div>
+</div>
+<script src="scripts/synth.js"></script>

@@ -7,6 +7,10 @@ angular.module('audioExpApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/synth', {
+        templateUrl: 'views/synth.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
