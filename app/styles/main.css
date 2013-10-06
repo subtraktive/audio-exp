@@ -10,6 +10,12 @@ html{
 
 body{
     background: rgba(26, 188, 156, 1.0);
+    -webkit-transition: background 600ms linear;
+     -moz-transition: background 600ms linear;
+     -o-transition: background 600ms linear;
+     -ms-transition: background 600ms linear;
+     transition: background 600ms linear;
+     font-family: 'Oxygen', sans-serif;
 }
 
 /*Styles for main page */
@@ -20,11 +26,36 @@ body{
 
 
 /*Styles for Synth page */
+
+.wave-selector{
+	margin: 0 auto;
+	background: #eee;
+	padding: 10px;
+	box-shadow: 0px 3px 7px #444;
+	font-size: 22px;
+	width: 700px;
+}
+
 #keyboard{
 	width: 600px;
 	background: #ccc;
 	padding: 20px;
-	margin-top: 40px;
+	margin: 40px auto 0;
+}
+
+.slider{
+	padding: 15px 0;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.slider span{
+	margin-left: 15px;
+	min-width: 70px;
+}
+
+.slider input{
+	margin-top: 10px;
 }
 
 .key{

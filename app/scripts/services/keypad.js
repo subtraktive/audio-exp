@@ -1,6 +1,6 @@
 'use strict';
 
-audioExp.factory('keypadService', ['synth', function (synth){
+audioExp.factory('keypadService', ['synth', 'animateKeys', 'changeBg', function (synth, animateNotes, changeBg){
 
 	var Keypad = function(){
 
@@ -23,7 +23,11 @@ audioExp.factory('keypadService', ['synth', function (synth){
 	
 	Keypad.prototype.keydown = function (event){
 		if(event.keyCode in this.keymap){
-			synth.noteOn(this.keymap[event.keyCode]+5);
+			var note = this.keymap[event.keyCode];
+			var elm = document.querySelector('div[data-note="'+note+'"]');
+			synth.noteOn(note+5);
+			animateNotes(note, elm);
+			changeBg.changeColor();
 		}
 	}
 
