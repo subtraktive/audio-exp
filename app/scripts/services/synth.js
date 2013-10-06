@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('audioExpApp').factory('synth', function(){
+audioExp.factory('synth', function(){
 
-	var Synth = function(context){
+	var Synth = function (context){
 
 		this.context = context || new webkitAudioContext();
 
@@ -37,7 +37,7 @@ angular.module('audioExpApp').factory('synth', function(){
 
 	};
 
-	Synth.prototype.noteOn = function(note){
+	Synth.prototype.noteOn = function (note){
 
 		var frequency = this.notes[note] || 0,
 		now = this.context.currentTime;
@@ -69,13 +69,16 @@ angular.module('audioExpApp').factory('synth', function(){
 
 		var now = this.context.currentTime,
 		min = 40,
-		max = this.context.sampleRate / 2;
-		noOfOctaves = Math.log(max/min) / Math.LN2;
-		multiplier = Math.pow(2, noOfOctaves * (value - 1.0));
+		max = this.context.sampleRate / 2,
+		noOfOctaves = Math.log(max/min) / Math.LN2,
+		multiplier = Math.pow(2, noOfOctaves * (value - 1.0)),
+		filterF = max * multiplier;
 
 		console.log("the f is " +(max *multiplier));
 
 		this.filter.frequency.setValueAtTime( max * multiplier, now);
+
+		return filterF;
 	}
 
 	Synth.prototype.setFilterQ = function(value){
@@ -83,6 +86,8 @@ angular.module('audioExpApp').factory('synth', function(){
 		var now = this.context.currentTime;
 
 		this.filter.Q.setValueAtTime(value * 30, now);
+
+		return value * 30;
 
 	}
 

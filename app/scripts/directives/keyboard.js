@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('audioExpApp').directive('keyboard', function(synth){
+audioExp.directive('keyboard', [ 'synth', function (synth){
 
 	return{
 
@@ -51,4 +51,4 @@ angular.module('audioExpApp').directive('keyboard', function(synth){
 			})
 		}
 	}
-})
+}])

@@ -1,5 +1,5 @@
 <div class="synth-wrapper">
-    <div class="wave-selector">
+    <div class="wave-selector" audio-ctrl>
         <span>Select the wave type:</span>
         <select name="" id="wavetype">
             <option value="0">Sine</option>
@@ -9,11 +9,13 @@
         </select>
         <div class="slider">
             <span>Cutoff</span>
-            <input type="range" min="0" max="1" step=".05" value=".7" id="cutoff-freq">
+            <input type="range" min="0" max="1" step=".05" value=".7" ng-model="slider.cutoff" id="cutoff-freq">
+            <span>{{freq | filter:0}}f</span>
         </div>
         <div class="slider">
             <span>Resonance</span>
-            <input type="range" min="0" max="1" step=".01" value=".4" id="filter-q">
+            <input type="range" min="0" max="1" step=".01" value=".4" ng-model="slider.resonance" id="filter-q">
+            <span>{{q}}db</span>
         </div>
     </div>
     <div id="keyboard" keyboard class="clearfix">
