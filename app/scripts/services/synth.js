@@ -1,6 +1,6 @@
 'use strict';
 
-audioExp.factory('synth', function(){
+audioExp.provider('synth', function(){
 
 	var Synth = function (context){
 
@@ -91,8 +91,10 @@ audioExp.factory('synth', function(){
 
 	}
 
-	var audiocontext = new webkitAudioContext(),
-	synth = new Synth(audiocontext);
+	var context = new webkitAudioContext();
 
-	return synth;
+	this.$get = function(){
+		return new Synth(context);
+		
+	}
 })

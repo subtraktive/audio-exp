@@ -2,9 +2,10 @@
 
 audioExp.controller('MainCtrl', function ($scope, synth) {
 
-  	$scope.synth = synth;
+  	$scope.synth = synth
+	//synth = new Synth(audiocontext);
   	
-  	synth.oscillator.type = 2;
+  	$scope.synth.oscillator.type = 2;
 
 	var colorKeys = function(elm){
 		var val1 = parseInt(255*Math.random()),

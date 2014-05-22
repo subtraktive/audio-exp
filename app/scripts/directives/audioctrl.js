@@ -18,8 +18,7 @@ audioExp.directive('audioCtrl', ['synth', function (synth){
 			filterQ = document.getElementById('filter-q');
 
 			waveType.onchange = function(e){
-				var wave = e.target.value;
-				synth.oscillator.type = parseInt(wave);
+				synth.oscillator.type = parseInt(e.target.value);
 			}
 
 			filterF.onchange = function(e){
