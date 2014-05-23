@@ -1,0 +1,106 @@
+/*========================*\
+ 	Main Style goes here
+\*========================*/
+
+body,
+html{
+    height: 100%;
+    margin: 0;
+}
+
+body{
+    background: rgba(26, 188, 156, 1.0);
+    -webkit-transition: background 600ms linear;
+     -moz-transition: background 600ms linear;
+     -o-transition: background 600ms linear;
+     -ms-transition: background 600ms linear;
+     transition: background 600ms linear;
+     font-family: 'Oxygen', sans-serif;
+}
+
+/*Styles for main page */
+
+.main-wrapper{
+	
+}
+
+
+/*Styles for Synth page */
+
+.wave-selector{
+	margin: 0 auto;
+	background: #eee;
+	padding: 10px;
+	box-shadow: 0px 3px 7px #444;
+	font-size: 22px;
+	width: 700px;
+}
+
+#keyboard{
+	width: 600px;
+	background: #ccc;
+	padding: 20px;
+	margin: 40px auto 0;
+}
+
+.slider{
+	padding: 15px 0;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.slider span{
+	margin-left: 15px;
+	min-width: 70px;
+}
+
+.slider input{
+	margin-top: 10px;
+}
+
+.key{
+	float: left;
+	cursor: pointer;
+	position: relative;
+}
+
+.note{
+	position: absolute;
+	left: 25%;
+	top: 0%;
+	font-weight: bold;
+	font-size: 20px;
+	/*opacity: 1;*/
+	-webkit-animation: animatenote 2s 1 linear;
+	-moz-animation: animatenote 2s 1 linear;
+	-ms-animation: animatenote 2s 1 linear;
+	-o-animation: animatenote 2s 1 linear;
+	animation: animatenote 2s 1 linear;
+}
+
+.white-keys{
+	width: 13.7%;
+	background: #fff;
+	height: 200px;
+	box-shadow: 2px 2px 2px #666;
+	margin-right: 2px;
+}
+
+.black-keys{
+	width: 60%;
+	background: #333;
+	height: 150px;
+	position: relative;
+	top: 0;
+	left: 72%;
+	z-index: 2;
+}
+
+@-webkit-keyframes animatenote{
+	25% {top: -50%; opacity: .6; -webkit-transform: rotate(30deg);}
+	50% {top: -100%; opacity: .2;-webkit-transform: rotate(-30deg);}
+	75% {top: -150%; opacity: 0;-webkit-transform: rotate(30deg);}
+	100% {top: -200%; opacity: 0;-webkit-transform: rotate(-30deg);}
+	/*from {top: 0%;}
+	to {top: -200%;}*/
+}

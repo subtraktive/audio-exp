@@ -1,6 +1,6 @@
 'use strict';
 
-audioExp.directive('keyboard', [ 'synth', 'animateKeys', 'changeBg', function (synth, animateNotes, changeBg){
+audioExp.directive('keyboard', ['animateKeys', 'changeBg', function (animateNotes, changeBg){
 
 	return{
 
@@ -8,7 +8,8 @@ audioExp.directive('keyboard', [ 'synth', 'animateKeys', 'changeBg', function (s
 
 		link: function(scope, elm, attr){
 
-			var keys = $(elm).find('.key');
+			var keys = $(elm).find('.key'),
+			synth = scope.synth;
 
 			$(keys).each(function(){
 

@@ -1,8 +1,9 @@
 'use strict';
 
-audioExp.controller('MainCtrl', function ($scope, synth) {
+audioExp.controller('MainCtrl', ['$scope', 'synth', function ($scope, Synth) {
 
-  	$scope.synth = synth
+	var context = new webkitAudioContext();
+  	$scope.synth = new Synth(context);
 	//synth = new Synth(audiocontext);
   	
   	$scope.synth.oscillator.type = 2;
@@ -19,4 +20,4 @@ audioExp.controller('MainCtrl', function ($scope, synth) {
 	}
 
 
-  });
+  }]);

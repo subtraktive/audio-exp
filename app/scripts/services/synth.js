@@ -1,6 +1,6 @@
 'use strict';
 
-audioExp.provider('synth', function(){
+audioExp.factory('synth', ['filter', function(Filter){
 
 	var Synth = function (context){
 
@@ -18,9 +18,7 @@ audioExp.provider('synth', function(){
 
 		this.gain = this.context.createGainNode();
 
-		this.filter = this.context.createBiquadFilter();
-
-		this.filter.type = 0;
+		this.filter = new Filter(this.context);
 
 		this.portamento = .1;
 
@@ -76,7 +74,7 @@ audioExp.provider('synth', function(){
 
 		console.log("the f is " +(max *multiplier));
 
-		this.filter.frequency.setValueAtTime( max * multiplier, now);
+		this.filter.setFreq( max * multiplier, now);
 
 		return filterF;
 	}
@@ -91,10 +89,6 @@ audioExp.provider('synth', function(){
 
 	}
 
-	var context = new webkitAudioContext();
+	return Synth;
 
-	this.$get = function(){
-		return new Synth(context);
-		
-	}
-})
+}])

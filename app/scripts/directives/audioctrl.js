@@ -1,6 +1,6 @@
 'use strict';
 
-audioExp.directive('audioCtrl', ['synth', function (synth){
+audioExp.directive('audioCtrl', [function (){
 	
 	return{
 		restrict: 'A',
@@ -8,6 +8,7 @@ audioExp.directive('audioCtrl', ['synth', function (synth){
 		link: function(scope, elm, attr){
 
 			//initialize
+			var synth = scope.synth;
 			scope.freq = 0;
 			scope.q = 0;
 			//Attaching events to the sliders
