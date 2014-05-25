@@ -17,7 +17,3 @@ audioExp.config(function ($routeProvider) {
     });
 });
 
-audioExp.run(['$window', 'keypadService', function (window, keypad){
-  window.onkeydown = function(e){ keypad.keydown(e)};
-  window.onkeyup = function(e){keypad.keyup(e)};
-}])

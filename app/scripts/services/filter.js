@@ -15,6 +15,10 @@ audioExp.factory('filter', [function(){
 		this.filter.frequency.setValueAtTime( val, time);
 	}
 
+	Filter.prototype.setQ = function(val, time){
+		this.filter.Q.setValueAtTime(val, time);
+	}
+
 	Filter.prototype.setType = function(type){
 		this.filter.type = type;
 	}

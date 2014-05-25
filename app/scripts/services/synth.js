@@ -18,7 +18,7 @@ audioExp.factory('synth', ['filter', function(Filter){
 
 		this.gain = this.context.createGainNode();
 
-		this.filter = new Filter(this.context);
+		this.filter1 = new Filter(this.context);
 
 		this.portamento = .1;
 
@@ -27,9 +27,9 @@ audioExp.factory('synth', ['filter', function(Filter){
 		this.oscillator.noteOn(0);
 
 		//Pipe Oscillator->Filter->Gain->Output
-		this.oscillator.connect(this.filter);
+		this.oscillator.connect(this.filter1.filter);
 
-		this.filter.connect(this.gain);
+		this.filter1.filter.connect(this.gain);
 
 		this.gain.connect(this.context.destination);
 
@@ -74,7 +74,7 @@ audioExp.factory('synth', ['filter', function(Filter){
 
 		console.log("the f is " +(max *multiplier));
 
-		this.filter.setFreq( max * multiplier, now);
+		this.filter1.setFreq( max * multiplier, now);
 
 		return filterF;
 	}
@@ -83,7 +83,7 @@ audioExp.factory('synth', ['filter', function(Filter){
 
 		var now = this.context.currentTime;
 
-		this.filter.Q.setValueAtTime(value * 30, now);
+		this.filter1.setQ(value * 30, now);
 
 		return value * 30;
 
