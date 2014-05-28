@@ -12,6 +12,10 @@ audioExp.config(function ($routeProvider) {
       templateUrl: 'views/synth.html',
       controller: 'MainCtrl'
     })
+    .when('/loop', {
+      templateUrl: 'views/loop.html',
+      controller: 'loopCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });

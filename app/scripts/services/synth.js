@@ -72,8 +72,6 @@ audioExp.factory('synth', ['filter', function(Filter){
 		multiplier = Math.pow(2, noOfOctaves * (value - 1.0)),
 		filterF = max * multiplier;
 
-		console.log("the f is " +(max *multiplier));
-
 		this.filter1.setFreq( max * multiplier, now);
 
 		return filterF;
