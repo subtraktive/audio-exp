@@ -7,9 +7,10 @@ audioExp.factory('audio', ['filter', function(filter){
         this.compatibility = {};
         this.file = file;
         this.proceed = true;
-        this.source_loop = {};
-        this.source_once = {};
         this.ctx = ctx;
+        
+        this.playing = false;
+        
     }
  
     //-----------------
@@ -46,9 +47,7 @@ audioExp.factory('audio', ['filter', function(filter){
                 that.ctx.decodeAudioData(
                     req.response,
                     function(buffer) {
-                        that.buffer = buffer;
-                        that.source_loop = {};
-                       
+                        that.buffer = that.source_loop.buffer = buffer;
                     },
                     function() {
                         console.log('Error decoding audio "' + that.file + '".');
@@ -60,20 +59,21 @@ audioExp.factory('audio', ['filter', function(filter){
     
     Audio.prototype.play = function() {
 
-        this.source_loop = this.ctx.createBufferSource();
-        this.source_loop.buffer = this.buffer;
-        this.source_loop.loop = true;
         this.source_loop._startTime = this.ctx.currentTime;
         this.source_loop.start(0);
-        this.sourcethis._playing = true;
+        this.playing = true;
     };
 
     Audio.prototype.connect = function(node){
+        this.source_loop = this.ctx.createBufferSource();
+        this.source_loop.loop = true;
         this.source_loop.connect(node);
     };
     
     Audio.prototype.stop = function(){
+        this.playing = false;
         this.source_loop.stop(0);
+        this.source_loop = {}
     };
 
 
