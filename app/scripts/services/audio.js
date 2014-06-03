@@ -2,15 +2,16 @@
 
 audioExp.factory('audio', ['filter', function(filter){
 
-    var Audio = function(ctx, file){
+    var Audio = function(ctx, file, dest){
         this.buffer = {};
         this.compatibility = {};
         this.file = file;
         this.proceed = true;
         this.ctx = ctx;
-        
+        this.source_loop = {};
         this.playing = false;
-        
+        this.dest = dest;
+        this.load();
     }
  
     //-----------------
@@ -47,7 +48,8 @@ audioExp.factory('audio', ['filter', function(filter){
                 that.ctx.decodeAudioData(
                     req.response,
                     function(buffer) {
-                        that.buffer = that.source_loop.buffer = buffer;
+                        that.buffer = buffer;
+                        //that.setBuffer();
                     },
                     function() {
                         console.log('Error decoding audio "' + that.file + '".');
@@ -57,18 +59,21 @@ audioExp.factory('audio', ['filter', function(filter){
             req.send();
     };
     
-    Audio.prototype.play = function() {
+    Audio.prototype.setBuffer = function(){
+        this.source_loop = {};
+        this.source_loop = this.ctx.createBufferSource();
+        this.source_loop.buffer = this.buffer;
+        this.source_loop.loop = true;
+        this.source_loop.connect(this.dest);
+    }
 
+    Audio.prototype.play = function() {
+        this.setBuffer();
         this.source_loop._startTime = this.ctx.currentTime;
         this.source_loop.start(0);
         this.playing = true;
     };
 
-    Audio.prototype.connect = function(node){
-        this.source_loop = this.ctx.createBufferSource();
-        this.source_loop.loop = true;
-        this.source_loop.connect(node);
-    };
     
     Audio.prototype.stop = function(){
         this.playing = false;
