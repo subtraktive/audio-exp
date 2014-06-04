@@ -96,6 +96,19 @@ body{
 	z-index: 2;
 }
 
+
+ .filter-control{
+ 	width: 120px;
+ 	height: 30px;
+ 	border: 1px solid #666;
+ 	span{
+ 		display: block;
+ 		background: red;
+ 		height: 100%;
+ 		width: 20%;
+ 	}
+ }
+
 @-webkit-keyframes animatenote{
 	25% {top: -50%; opacity: .6; -webkit-transform: rotate(30deg);}
 	50% {top: -100%; opacity: .2;-webkit-transform: rotate(-30deg);}

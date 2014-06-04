@@ -4,15 +4,15 @@ audioExp.factory('filter', [function(){
 
 	function Filter(ctx){
 		this.filter = ctx.createBiquadFilter();
-		this.freq = 50;
-		this.filter.type = 0;
-		this.filter.frequency.value = 1000;
+		this.filter.type = 2;
+		this.filter.frequency.value = 500;
+		this.filter.cTime = ctx.currentTime;
 	}
 
 	Filter.prototype.setFreq = function(val, time){
 		this.freq = val;
 		this.filter.frequency.value = val;
-		this.filter.frequency.setValueAtTime( val, time);
+		//this.filter.setFreq( val, time);
 	}
 
 	Filter.prototype.setQ = function(val, time){
@@ -24,7 +24,7 @@ audioExp.factory('filter', [function(){
 	}
 
 	Filter.prototype.connect = function(node){
-		this.connect(node);
+		this.filter.connect(node);
 	}
 
 	return Filter;

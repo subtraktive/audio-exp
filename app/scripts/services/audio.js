@@ -49,7 +49,6 @@ audioExp.factory('audio', ['filter', function(filter){
                     req.response,
                     function(buffer) {
                         that.buffer = buffer;
-                        //that.setBuffer();
                     },
                     function() {
                         console.log('Error decoding audio "' + that.file + '".');

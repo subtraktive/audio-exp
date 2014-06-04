@@ -74,6 +74,17 @@ module.exports = function (grunt) {
           }
         }
       },
+      autoprefixer: {
+        options: ['last 1 version'],
+        dist: {
+          files: [{
+            expand: true,
+            cwd: '.tmp/styles/',
+            src: '{,*/}*.css',
+            dest: '.tmp/styles/'
+          }]
+        }
+      },
       test: {
         options: {
           middleware: function (connect) {
