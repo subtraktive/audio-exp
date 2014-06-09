@@ -30,6 +30,7 @@ audioExp.factory('synth', ['VCF', function(VCF){
 		this.vcf.filter.connect(this.gain);
 		this.gain.connect(this.context.destination);
 		oscillator.start(0);
+		console.log("this fre", frequency);
 	}
 
 	Synth.prototype.noteOff = function(){
@@ -60,10 +61,10 @@ audioExp.factory('synth', ['VCF', function(VCF){
 		noOfOctaves = Math.log(max/min) / Math.LN2,
 		multiplier = Math.pow(2, noOfOctaves * (value - 1.0)),
 		filterF = max * multiplier;
+		this.vcf.filter.frequency.value = value;
+		//this.vcf.setFreq( max * multiplier, now);
 
-		this.vcf.setFreq( max * multiplier, now);
-
-		return filterF;
+		//return filterF;
 	}
 
 	Synth.prototype.setFilterQ = function(value){

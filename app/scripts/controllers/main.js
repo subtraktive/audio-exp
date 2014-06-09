@@ -4,7 +4,7 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
 
 	var ctx = new AudioContext();
 	var synth1 = $scope.synth = new Synth(ctx);
-	$scope.filter = synth1.vcf;
+	$scope.filter = {};
 
 	$scope.playNote = function(note){
 		var synth1 = $scope.synth = new Synth(ctx)
@@ -37,6 +37,7 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
 		if(!keyPressed[e.keyCode]){
 			keyPressed[e.keyCode] = true;
 			var syn =  new Synth(ctx);
+			$scope.filter.vcf = syn.vcf;
 		    keyService.keydown(e, syn);
 		    active_osc[e.keyCode] = syn;
 		}

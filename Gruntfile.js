@@ -260,7 +260,8 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp,svg}',
-            'styles/fonts/*'
+            'styles/fonts/*',
+            'sound/*'
           ]
         }, {
           expand: true,
@@ -289,6 +290,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'coffee',
+        'compass:server',
         'imagemin',
         'htmlmin'
       ]

@@ -5,8 +5,8 @@ audioExp.factory('VCF', [function(){
 	//Voltage Controlled Filter
 	function VCF(ctx){
 		this.filter = ctx.createBiquadFilter();
-		this.filter.type = 2;
-		this.filter.frequency.value = 500;
+		this.filter.type = 0;
+		this.filter.frequency.value = 300;
 		this.filter.cTime = ctx.currentTime;
 	}
 
