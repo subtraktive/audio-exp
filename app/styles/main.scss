@@ -97,7 +97,8 @@ body{
 }
 
 
- .filter-control{
+ .filter-control,
+ .cutoff-wrapper{
  	width: 120px;
  	height: 30px;
  	border: 1px solid #666;
@@ -105,7 +106,6 @@ body{
  		display: block;
  		background: red;
  		height: 100%;
- 		width: 20%;
  	}
  }
 

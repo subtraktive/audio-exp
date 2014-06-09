@@ -1,6 +1,6 @@
 'use strict';
 
-audioExp.factory('audio', ['filter', function(filter){
+audioExp.factory('audio', ['VCF', function(filter){
 
     var Audio = function(ctx, file, dest){
         this.buffer = {};

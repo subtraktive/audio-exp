@@ -21,7 +21,7 @@ audioExp.factory('keypadService', ['synth', 'animateKeys', 'changeBg', function 
 
 	};
 	
-	Keypad.prototype.keydown = function (event){
+	Keypad.prototype.keydown = function (event, synth){
 		if(event.keyCode in this.keymap){
 			var note = this.keymap[event.keyCode];
 			var elm = document.querySelector('div[data-note="'+note+'"]');
@@ -31,9 +31,6 @@ audioExp.factory('keypadService', ['synth', 'animateKeys', 'changeBg', function 
 		}
 	}
 
-	Keypad.prototype.keyup = function (){
-		synth.noteOff();
-	}
 
 	return new Keypad();
 }]);

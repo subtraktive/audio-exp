@@ -11,6 +11,7 @@ audioExp.directive("filterCtrl", [function(){
 				top = e.pageY - $(this).offset().top;
 				f = left/width;
 				console.log("top left", top, left, scope.filter);
+				scope.filter.filter.frequency.value = f*10*500;
 				scope.filter.setFreq(f*10*500, scope.filter.filter.cTime);
 			})
 		}

@@ -1,21 +1,25 @@
 'use strict';
 
-audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', function ($scope, Synth, BufferLoader, audio) {
+audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'keypadService', function ($scope, Synth, BufferLoader, audio, keyService) {
 
-  var synth1 = $scope.synth = new Synth(audio.context);
- 
-  $scope.playNote = function(note){
-  	synth1.noteOn(note)
-  }
+	var ctx = new AudioContext();
+	var synth1 = $scope.synth = new Synth(ctx);
+	$scope.filter = synth1.vcf;
 
-  $scope.stopNote = function(){
-  	syth1.noteOff();
-  }
+	$scope.playNote = function(note){
+		var synth1 = $scope.synth = new Synth(ctx)
+		synth1.noteOn(note)
+	}
 
-  $scope.slideNote = function(note){
-  	synth1.noteSlide(note);
-  }
+	$scope.stopNote = function(){
+		syth1.noteOff();
+	}
 
+	$scope.slideNote = function(note){
+		synth1.noteSlide(note);
+	}
+
+  	var active_osc = {};
 	var colorKeys = function(elm){
 		var val1 = parseInt(255*Math.random()),
 		val2 = parseInt(255*Math.random()),
@@ -26,5 +30,22 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', fun
 			elm.removeAttribute("style");
 		}, 300)
 	}
+
+	var keyPressed = {};
+
+	$(document).keydown(function(e){	
+		if(!keyPressed[e.keyCode]){
+			keyPressed[e.keyCode] = true;
+			var syn =  new Synth(ctx);
+		    keyService.keydown(e, syn);
+		    active_osc[e.keyCode] = syn;
+		}
+	});
+
+	$(document).keyup(function(e){
+		keyPressed[e.keyCode] = false;
+		active_osc[e.keyCode].noteOff();
+	    delete active_osc[e.keyCode];
+	});
 
 }]);

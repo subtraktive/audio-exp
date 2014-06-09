@@ -13,6 +13,9 @@
             <span class="pull-left">Cutoff</span>
             <span class="pull-right">{{freq | number:0}}f</span>
             <input class="pull-right" type="range" min="0" max="1" step=".05" value=".7" ng-model="slider.cutoff" id="cutoff-freq">
+            <div class="cutoff-wrapper" filter-ctrl>
+                <span></span>
+            </div>
         </div>
         <div class="slider clearfix">
             <span class="pull-left">Resonance</span>
@@ -22,22 +25,24 @@
     </div>
     <div id="keyboard" keyboard class="clearfix">
         <div class="white-keys key" data-note="C">
-            <div class="black-keys key" data-note="C#"></div>
+            A
+            <div class="black-keys key" data-note="C#">W</div>
         </div>
         <div class="white-keys key" data-note="D">
-            <div class="black-keys key" data-note="D#"></div>
+            S
+            <div class="black-keys key" data-note="D#">E</div>
         </div>
-        <div class="white-keys key" data-note="E"></div>
-        <div class="white-keys key" data-note="F">
-            <div class="black-keys key" data-note="F#"></div>
+        <div class="white-keys key" data-note="E">D</div>
+        <div class="white-keys key" data-note="F">H
+            <div class="black-keys key" data-note="F#">U</div>
         </div>
-        <div class="white-keys key" data-note="G">
-            <div class="black-keys key" data-note="G#"></div>
+        <div class="white-keys key" data-note="G">J
+            <div class="black-keys key" data-note="G#">I</div>
         </div>
         <div class="white-keys key" data-note="A">
-            <div class="black-keys key" data-note="A#"></div>
+            K
+            <div class="black-keys key" data-note="A#">O</div>
         </div>
-        <div class="white-keys key" data-note="B"></div>
+        <div class="white-keys key" data-note="B">L</div>
     </div>
 </div>
-<script src="scripts/synth.js"></script>
