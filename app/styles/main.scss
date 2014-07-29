@@ -50,8 +50,7 @@ body{
 }
 
 .slider span{
-	margin-left: 15px;
-	min-width: 70px;
+	// margin-left: 15px;
 }
 
 .slider input{
@@ -104,7 +103,7 @@ body{
  	border: 1px solid #666;
  	span{
  		display: block;
- 		background: red;
+ 		background: #3498db;
  		height: 100%;
  	}
  }

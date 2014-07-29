@@ -1,10 +1,10 @@
 'use strict';
 
-audioExp.controller('loopCtrl',['audio', '$scope', 'filter', function(Audio, $scope, Filter){
+audioExp.controller('loopCtrl',['audio', '$scope', 'VCF', function(Audio, $scope, Filter){
 	var ctx = new AudioContext();
 	var gain = ctx.createGainNode();	
 	var filter = $scope.filter = new Filter(ctx);
-	var loop = new Audio(ctx, "sound/beat1.wav", filter.filter),
+	var loop = new Audio(ctx, "sound/noise.wav", filter.filter),
 	loop2 = new Audio(ctx, "sound/sound.wav", filter.filter);
 	filter.connect(gain);
 	gain.connect(ctx.destination);

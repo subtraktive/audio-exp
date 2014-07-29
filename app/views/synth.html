@@ -3,24 +3,23 @@
         <div class="slider clearfix">
             <span class="pull-left">Select the wave type:</span>
             <select name="" id="wavetype" class="pull-right">
-                <option value="0">Sine</option>
-                <option value="1">Square</option>
-                <option value="2">Sawtooth</option>
-                <option value="3">Triangle</option>
+                <option value="0" ng-click="changeOsc(0)">Sine</option>
+                <option value="1" ng-click="changeOsc(1)">Square</option>
+                <option value="2" ng-click="changeOsc(2)">Sawtooth</option>
+                <option value="3" ng-click="changeOsc(3)">Triangle</option>
             </select>
         </div>
         <div class="slider clearfix">
             <span class="pull-left">Cutoff</span>
-            <span class="pull-right">{{freq | number:0}}f</span>
-            <input class="pull-right" type="range" min="0" max="1" step=".05" value=".7" ng-model="slider.cutoff" id="cutoff-freq">
-            <div class="cutoff-wrapper" filter-ctrl>
+            <div class="cutoff-wrapper pull-right" filter-ctrl="cutoff">
                 <span></span>
             </div>
         </div>
         <div class="slider clearfix">
             <span class="pull-left">Resonance</span>
-             <span class="pull-right">{{q | number:0}}db</span>
-            <input class="pull-right" type="range" min="0" max="1" step=".01" value=".4" ng-model="slider.resonance" id="filter-q">
+            <div class="cutoff-wrapper pull-right" filter-ctrl="res">
+                <span></span>
+            </div>
         </div>
     </div>
     <div id="keyboard" keyboard class="clearfix">

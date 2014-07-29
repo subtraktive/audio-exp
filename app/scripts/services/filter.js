@@ -17,7 +17,7 @@ audioExp.factory('VCF', [function(){
 	}
 
 	VCF.prototype.setQ = function(val, time){
-		this.filter.Q.setValueAtTime(val, time);
+		this.filter.Q.value = val;
 	}
 
 	VCF.prototype.setType = function(type){

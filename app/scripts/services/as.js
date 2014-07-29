@@ -2,6 +2,7 @@
 //Audio Sculptor
 
 audioExp.factory('as', [
+
     function() {
 
         var as = {};
@@ -22,5 +23,21 @@ audioExp.factory('as', [
                 }
             }
         }
+
+        as.init = function() {
+            checkSupport();
+        }
+
+        as.now = function() {
+            return this.context().currentTime;
+        };
+
+        as.connect = function() {
+            arguments[0].connect(arguments[1]);
+        }
+
+        as.init();
+
+        return as;
     }
 ])
