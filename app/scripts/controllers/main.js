@@ -7,20 +7,10 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
         var synth = $scope.synth = new Synth(as.context());
         $scope.filter = {};
 
-        // $scope.playNote = function(note) {
-        //     var synth1 = $scope.synth = new Synth(ctx)
-        //     synth1.noteOn(note)
-        // }
-
-        // $scope.stopNote = function() {
-        //     syth1.noteOff();
-        // }
-
-        // $scope.slideNote = function(note) {
-        //     synth1.noteSlide(note);
-        // }
+        synth.setType("sawtooth");
 
         var active_osc = {};
+
         var colorKeys = function(elm) {
             var val1 = parseInt(255 * Math.random()),
                 val2 = parseInt(255 * Math.random()),
@@ -34,27 +24,9 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
 
         var keyPressed = {};
 
-        $scope.changeOsc = function(val) {
-            console.log("the active osc", active_osc);
-        }
-
-        // function update(syn) {
-        //     var bars = 30;
-
-        // var data = new Uint8Array(syn.analyser.frequencyBinCount);
-        //     syn.analyser.getByteFrequencyData(data);
-        //     for (var i = 0; i < data.length; i++) {
-        //         console.log("the data is", data[i]);
-        //     }
-        //     console.log("the data is", data);
-        // }
-
         $(document).keydown(function(e) {
             if (!keyPressed[e.keyCode]) {
                 keyPressed[e.keyCode] = true;
-                //synth.noteOn()
-                //$scope.filter.vcf = syn.vcf;
-                //update(syn);
                 keyService.keydown(e, synth);
                 //active_osc[e.keyCode] = syn;
             }
@@ -62,7 +34,6 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
 
         $(document).keyup(function(e) {
             keyPressed[e.keyCode] = false;
-            //active_osc[e.keyCode].noteOff();
             keyService.keyup(e, synth);
             delete active_osc[e.keyCode];
         });

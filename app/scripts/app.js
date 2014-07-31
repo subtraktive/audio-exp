@@ -16,6 +16,10 @@ audioExp.config(function($routeProvider) {
             templateUrl: 'views/loop.html',
             controller: 'loopCtrl'
         })
+        .when('/canvas', {
+            templateUrl: 'views/canvas.html',
+            controller: 'patternCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });
