@@ -15,6 +15,8 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
             this.gain = this.context.createGain();
             as.connect(this.gain, this.output);
             this.oscType = "sine";
+            this.filterF = 300;
+
             //Create oscillator, filter and gain note
             //this.vcf = new VCF(this.context);
             // this.portamento = .1;
@@ -27,18 +29,23 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
         Synth.prototype.noteOn = function(note) {
 
             var frequency = this.notes[note] || 0,
-                now = this.context.currentTime;
-            var oscillator = this.context.createOscillator();
+                now = this.context.currentTime,
+                oscillator = this.context.createOscillator(),
+                filter = new VCF(this.context);
             oscillator.type = this.oscType;
             this.osc.push(oscillator);
             oscillator.frequency.setValueAtTime(frequency, now);
-
-            oscillator.connect(this.gain);
+            filter.setFreq(this.filterF);
+            oscillator.connect(filter.filter);
+            filter.filter.connect(this.gain);
             //this.vcf.filter.connect(this.gain);
             //this.gain.connect(this.analyser);
             //this.analyser.connect(this.context.destination);
             oscillator.start(0);
-            console.log("this fre", frequency);
+        }
+
+        Synth.prototype.setFilterF = function(f) {
+            this.filterF = f;
         }
 
         Synth.prototype.noteOff = function(note) {

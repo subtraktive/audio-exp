@@ -8,6 +8,7 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
         $scope.filter = {};
 
         synth.setType("sawtooth");
+        synth.setFilterF(100);
 
         var active_osc = {};
 
