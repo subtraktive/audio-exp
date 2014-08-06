@@ -24,6 +24,10 @@
     </div>
 
     <script src="bower_components/angular/angular.js"></script>
+        <!-- build:js scripts/plugins.js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="scripts/lib/jquery-knob.js"></script>
+    <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
@@ -44,11 +48,10 @@
     <script src="scripts/services/as.js"></script>
     <script src="scripts/services/pattern.js"></script>
     <script src="scripts/controllers/patternCtrl.js"></script>
+    <script src="scripts/directives/knob.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js scripts/plugins.js -->
-    <script src="bower_components/jquery/jquery.js"></script>
-    <!-- endbuild -->
+
 
     <!-- build:js scripts/modules.js -->
     <script src="bower_components/angular-resource/angular-resource.js"></script>

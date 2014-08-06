@@ -12,14 +12,13 @@ audioExp.factory('VCF', [
             this.filter.cTime = ctx.currentTime;
         }
 
-        VCF.prototype.setFreq = function(val, time) {
-            this.freq = val;
+        VCF.prototype.setFreq = function(val) {
             this.filter.frequency.value = val;
-            //this.filter.setFreq( val, time);
         }
 
-        VCF.prototype.setQ = function(val, time) {
+        VCF.prototype.setQ = function(val) {
             this.filter.Q.value = val;
+            console.log("the q is", val);
         }
 
         VCF.prototype.setType = function(type) {

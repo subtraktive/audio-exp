@@ -29,7 +29,6 @@ body{
 
 .wave-selector{
 	margin: 0 auto;
-	background: #eee;
 	padding: 10px;
 	box-shadow: 0px 3px 7px #444;
 	font-size: 22px;
@@ -41,6 +40,7 @@ body{
 	background: #ccc;
 	padding: 20px;
 	margin: 40px auto 0;
+	margin-top: 6px;
 }
 
 .slider{
@@ -63,6 +63,40 @@ body{
 	position: relative;
 }
 
+.osc-selector{
+	.osc{
+		background: url(../img/osc.png) no-repeat;
+		width: 64px;
+		height: 64px;
+		display: block;
+		backgroud-position: -20px 0;
+		margin: 15px 0;
+		&.sine{
+			background-position: -20px -14px;
+			&.selected{
+				background-position: -97px -14px;
+			}
+		}
+		&.saw{
+			background-position: -20px -91px;
+			&.selected{
+				background-position: -97px -91px;
+			}
+		}
+		&.sqr{
+			background-position: -20px -169px;
+			&.selected{
+				background-position: -97px -169px;
+			}
+		}
+		&.tri{
+			background-position: -20px -245px;
+			&.selected{
+				background-position: -97px -245px;
+			}
+		}
+	}
+}
 .note{
 	position: absolute;
 	left: 25%;
@@ -88,7 +122,7 @@ body{
 .black-keys{
 	width: 60%;
 	background: #333;
-	height: 150px;
+	height: 120px;
 	position: relative;
 	top: 0;
 	left: 72%;

@@ -16,13 +16,7 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
             as.connect(this.gain, this.output);
             this.oscType = "sine";
             this.filterF = 300;
-
-            //Create oscillator, filter and gain note
-            //this.vcf = new VCF(this.context);
-            // this.portamento = .1;
-            // this.analyser = context.createAnalyser();
-            // this.analyser.fftSize = 2048;
-
+            this.filterQ = 1;
         };
 
         //Create new oscillator for every keypress
@@ -36,6 +30,7 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
             this.osc.push(oscillator);
             oscillator.frequency.setValueAtTime(frequency, now);
             filter.setFreq(this.filterF);
+            filter.setQ(this.filterQ);
             oscillator.connect(filter.filter);
             filter.filter.connect(this.gain);
             //this.vcf.filter.connect(this.gain);
@@ -60,40 +55,10 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
                 }
             })
 
-            //this.gain.gain.setValueAtTime(0, now);
-
         }
 
-        Synth.prototype.noteSlide = function(note) {
-
-            var now = this.context.currentTime,
-                frequency = this.notes[note] || 0;
-
-            this.oscillator.frequency.linearRampToValueAtTime(frequency, now + this.portamento);
-        }
-
-        Synth.prototype.setFilterFrequency = function(value) {
-
-            var now = this.context.currentTime,
-                min = 40,
-                max = this.context.sampleRate / 2,
-                noOfOctaves = Math.log(max / min) / Math.LN2,
-                multiplier = Math.pow(2, noOfOctaves * (value - 1.0)),
-                filterF = max * multiplier;
-            this.vcf.filter.frequency.value = value;
-            //this.vcf.setFreq( max * multiplier, now);
-
-            //return filterF;
-        }
-
-        Synth.prototype.setFilterQ = function(value) {
-
-            var now = this.context.currentTime;
-
-            this.filter1.setQ(value * 30, now);
-
-            return value * 30;
-
+        Synth.prototype.updateQ = function(value) {
+            this.filterQ = value;
         }
 
         Synth.prototype.setType = function(type) {

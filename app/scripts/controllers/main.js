@@ -6,8 +6,7 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
         //var ctx = new AudioContext();
         var synth = $scope.synth = new Synth(as.context());
         $scope.filter = {};
-
-        synth.setType("sawtooth");
+        $scope.sel = 'sine';
         synth.setFilterF(100);
 
         var active_osc = {};
@@ -39,7 +38,19 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
             delete active_osc[e.keyCode];
         });
 
+        $scope.updateCutOff = function(val) {
+            synth.setFilterF(val);
+        }
 
+        $scope.updateQ = function(val) {
+            synth.updateQ(val);
+        }
+
+        $scope.selectOsc = function(type) {
+            console.log("the type is", type)
+            $scope.sel = type;
+            synth.setType(type);
+        }
 
     }
 ]);

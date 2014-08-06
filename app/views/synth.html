@@ -1,47 +1,46 @@
 <div class="synth-wrapper">
     <div class="wave-selector" audio-ctrl>
         <div class="slider clearfix">
-            <span class="pull-left">Select the wave type:</span>
-            <select name="" id="wavetype" class="pull-right">
-                <option value="0" ng-click="changeOsc(0)">Sine</option>
-                <option value="1" ng-click="changeOsc(1)">Square</option>
-                <option value="2" ng-click="changeOsc(2)">Sawtooth</option>
-                <option value="3" ng-click="changeOsc(3)">Triangle</option>
-            </select>
+            <input type="text" value="100" knob change-type="cutoff" data-angleoffset="-125" data-anglearc="250" data-fgcolor="#ccc" data-step="2" data-min="10" data-max="15000">
+             <input type="text" value="0.5" knob change-type="q" data-angleoffset="-125" data-anglearc="250" data-fgcolor="#ccc" data-step="1" data-min="0.1" data-max="50">
         </div>
         <div class="slider clearfix">
-            <span class="pull-left">Cutoff</span>
-            <div class="cutoff-wrapper pull-right" filter-ctrl="cutoff">
-                <span></span>
-            </div>
+            
         </div>
         <div class="slider clearfix">
-            <span class="pull-left">Resonance</span>
-            <div class="cutoff-wrapper pull-right" filter-ctrl="res">
-                <span></span>
+            
+        </div>
+    </div>
+    
+    <div>
+        <div class="osc-selector">
+            <span class="osc sine" ng-click="selectOsc('sine')" ng-class="{selected: sel=='sine'}"></span>
+            <span class="osc tri" ng-click="selectOsc('triangle')" ng-class="{selected: sel == 'triangle'}"></span>
+            <span class="osc saw" ng-click="selectOsc('sawtooth')" ng-class="{selected: sel == 'sawtooth'}"></span>
+            <span class="osc sqr" ng-click="selectOsc('square')" ng-class="{selected: sel == 'square'}"></span>
+        </div>
+        <div id="keyboard" keyboard class="clearfix">
+            <div class="white-keys key" data-note="C">
+                
+                <div class="black-keys key" data-note="C#"></div>
             </div>
+            <div class="white-keys key" data-note="D">
+                
+                <div class="black-keys key" data-note="D#"></div>
+            </div>
+            <div class="white-keys key" data-note="E"></div>
+            <div class="white-keys key" data-note="F">
+                <div class="black-keys key" data-note="F#"></div>
+            </div>
+            <div class="white-keys key" data-note="G">
+                <div class="black-keys key" data-note="G#"></div>
+            </div>
+            <div class="white-keys key" data-note="A">
+                
+                <div class="black-keys key" data-note="A#"></div>
+            </div>
+            <div class="white-keys key" data-note="B"></div>
         </div>
     </div>
-    <div id="keyboard" keyboard class="clearfix">
-        <div class="white-keys key" data-note="C">
-            A
-            <div class="black-keys key" data-note="C#">W</div>
-        </div>
-        <div class="white-keys key" data-note="D">
-            S
-            <div class="black-keys key" data-note="D#">E</div>
-        </div>
-        <div class="white-keys key" data-note="E">D</div>
-        <div class="white-keys key" data-note="F">H
-            <div class="black-keys key" data-note="F#">U</div>
-        </div>
-        <div class="white-keys key" data-note="G">J
-            <div class="black-keys key" data-note="G#">I</div>
-        </div>
-        <div class="white-keys key" data-note="A">
-            K
-            <div class="black-keys key" data-note="A#">O</div>
-        </div>
-        <div class="white-keys key" data-note="B">L</div>
-    </div>
+    
 </div>
