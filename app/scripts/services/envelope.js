@@ -2,12 +2,12 @@
 
 audioExp.factory('Envelope', function(){
 
-	var Envelope = function(ctx, attack, decay, sustain, release){
+	var Envelope = function(ctx, settings){
 		this.ctx = ctx;
-		this.attack = attack;
-		this.decay = decay;
-		this.sustain = sustain;
-		this.release = release;
+		this.attack = settings.attack;
+		this.decay = settings.decay;
+		this.sustain = settings.sustain;
+		this.release = settings.release;
 	}
 
 	Envelope.prototype.connect = function(node){
@@ -15,12 +15,12 @@ audioExp.factory('Envelope', function(){
 	}
 
 	Envelope.prototype.trigger = function(){
-		var now = ctx.currentTime;
+		var now = this.ctx.currentTime;
 		this.dest.cancelScheduledValues(now);
 		this.dest.setValueAtTime(0, now);
 		this.dest.linearRampToValueAtTime(1, now + this.attack);
-		this.dest.linearRampToValueAtTime(this.sustain, now + this.attach + this.decay);
-		this.dest.linearRampToValueAtTime(0, now + this.attach + this.decay + this.release);
+		this.dest.linearRampToValueAtTime(this.sustain, now + this.attack + this.decay);
+		this.dest.linearRampToValueAtTime(0, now + this.attack + this.decay + this.release);
 	}
 
 	return Envelope;

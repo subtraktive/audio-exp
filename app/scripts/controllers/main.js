@@ -1,7 +1,7 @@
 'use strict';
 
-audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'keypadService', 'as',
-    function($scope, Synth, BufferLoader, audio, keyService, as) {
+audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'keypadService', 'as', '$timeout',
+    function($scope, Synth, BufferLoader, audio, keyService, as, $timeout) {
 
         //var ctx = new AudioContext();
         var synth = $scope.synth = new Synth(as.context());
@@ -47,7 +47,6 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
         }
 
         $scope.selectOsc = function(type) {
-            console.log("the type is", type)
             $scope.sel = type;
             synth.setType(type);
         }

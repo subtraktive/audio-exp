@@ -4,14 +4,17 @@
             <input type="text" value="100" knob change-type="cutoff" data-angleoffset="-125" data-anglearc="250" data-fgcolor="#ccc" data-step="2" data-min="10" data-max="15000">
              <input type="text" value="0.5" knob change-type="q" data-angleoffset="-125" data-anglearc="250" data-fgcolor="#ccc" data-step="1" data-min="0.1" data-max="50">
         </div>
-        <div class="slider clearfix">
-            
+        <div class="slider clearfix envelope" envelope-sel>
+            <div class="pull-left"><div class="env attack"><p></p></div><p class="clearfix text-center">A</p></div>
+            <div class="pull-left"><div class="env decay"><p></p></div><p class="clearfix text-center">D</p></div>
+            <div class="pull-left"><div class="env sustain"><p></p></div><p class="clearfix text-center">S</p></div>
+            <div class="pull-left"><div class="env release"><p></p></div><p class="clearfix text-center">R</p></div>
         </div>
         <div class="slider clearfix">
             
         </div>
     </div>
-    
+    <canvas id="visualizer" width="600" height="200"></canvas>
     <div>
         <div class="osc-selector">
             <span class="osc sine" ng-click="selectOsc('sine')" ng-class="{selected: sel=='sine'}"></span>

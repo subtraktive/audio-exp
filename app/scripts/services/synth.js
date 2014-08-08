@@ -1,8 +1,8 @@
 'use strict';
 
-audioExp.factory('synth', ['VCF', 'noteMap', 'as',
+audioExp.factory('synth', ['VCF', 'noteMap', 'as', 'Envelope', 'visualizer',
 
-    function(VCF, noteMap, as) {
+    function(VCF, noteMap, as, Envelope, Visualizer) {
 
         var Synth = function(context) {
 
@@ -13,10 +13,22 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
             this.osc = [];
             this.output = this.context.destination;
             this.gain = this.context.createGain();
-            as.connect(this.gain, this.output);
+            this.analyser = this.context.createAnalyser();
+            this.analyser.fftSize = 2048;
+            this.dataArray = new Uint8Array(this.analyser.frequencyBinCount)
+            this.gain.connect(this.analyser);
+            as.connect(this.analyser, this.output);
+            this.visuals = new Visualizer(this.dataArray);
             this.oscType = "sine";
             this.filterF = 300;
             this.filterQ = 1;
+
+            this.envSettings = {
+                attack: .4,
+                decay: .2,
+                sustain: .8,
+                release: 3
+            }
         };
 
         //Create new oscillator for every keypress
@@ -25,7 +37,9 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
             var frequency = this.notes[note] || 0,
                 now = this.context.currentTime,
                 oscillator = this.context.createOscillator(),
-                filter = new VCF(this.context);
+                filter = new VCF(this.context),
+                env = new Envelope(this.context, this.envSettings);
+            env.connect(this.gain.gain);
             oscillator.type = this.oscType;
             this.osc.push(oscillator);
             oscillator.frequency.setValueAtTime(frequency, now);
@@ -33,10 +47,10 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
             filter.setQ(this.filterQ);
             oscillator.connect(filter.filter);
             filter.filter.connect(this.gain);
-            //this.vcf.filter.connect(this.gain);
-            //this.gain.connect(this.analyser);
-            //this.analyser.connect(this.context.destination);
+            env.trigger();
             oscillator.start(0);
+            this.analyser.getByteTimeDomainData(this.dataArray);
+            this.visuals.draw();
         }
 
         Synth.prototype.setFilterF = function(f) {
@@ -63,6 +77,22 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as',
 
         Synth.prototype.setType = function(type) {
             this.oscType = type;
+        }
+
+        Synth.prototype.setAttack = function(val){
+            this.envSettings.attack = val;
+        }
+
+        Synth.prototype.setDecay = function(val){
+            this.envSettings.decay = val;
+        }
+
+        Synth.prototype.setRelease = function(val){
+            this.envSettings.release = val;
+        }
+
+        Synth.prototype.setSustain = function(val){
+            this.envSettings.sustain = val;
         }
 
         return Synth;
