@@ -27,7 +27,7 @@ audioExp.factory('visualizer',[function(){
 		for(var i = 0; i < this.len; i++){
 			v = this.buffer[i]/256.0;
 			console.log("v is", v);
-			y = v* this.cheight/2;
+			y = v* this.cheight;
 			console.log("y us", y);
 
 			if(i == 0){
