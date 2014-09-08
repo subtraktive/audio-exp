@@ -63,8 +63,8 @@ audioExp.factory('synth', ['VCF', 'noteMap', 'as', 'Envelope', 'visualizer',
                 freq = this.notes[note];
 
             this.osc.forEach(function(osc) {
-                //debugger;
                 if (+osc.frequency.value.toFixed(2) == freq) {
+                    console.log("the os stopped")
                     osc.stop();
                 }
             })

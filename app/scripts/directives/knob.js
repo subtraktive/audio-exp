@@ -10,7 +10,6 @@ audioExp.directive('knob', ['$timeout',
             },
             link: function(scope, elm, attr) {
                 //$timeout(function() {
-                console.log("scope is", scope)
                 $(elm).knob({
                     'change': function(v) {
                         if (scope.changeType == "cutoff") {

@@ -26,7 +26,7 @@ audioExp.directive('keyboard', ['animateKeys', 'changeBg',
                     $(this).on('mouseup', function(event) {
                         event.stopPropagation();
                         var note = this.dataset.note + 5; // parseInt(8*Math.random());
-                        synth.noteOff(0);
+                        synth.noteOff(note);
                     });
 
                     $(this).on('mousemove', function(event) {

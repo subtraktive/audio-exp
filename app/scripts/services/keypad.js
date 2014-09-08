@@ -35,10 +35,7 @@
          Keypad.prototype.keyup = function(event, synth) {
              if (event.keyCode in this.keymap) {
                  var note = this.keymap[event.keyCode];
-                 //var elm = document.querySelector('div[data-note="' + note + '"]');
                  synth.noteOff(note + 5);
-                 //animateNotes(note, elm);
-                 //changeBg.changeColor();
              }
          }
 

@@ -10,7 +10,7 @@ audioExp.factory('as', [
         var checkSupport = function() {
             var context;
 
-            if (typeof webkitAudioContext == 'undefined' || typeof AudioContext == "undefined") {
+            if (typeof AudioContext == "undefined" && typeof webkitAudioContext == 'undefined' ) {
                 alert("No web audio support")
             } else {
                 if (typeof AudioContext == 'function') {
