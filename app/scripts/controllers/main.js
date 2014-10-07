@@ -7,7 +7,7 @@ audioExp.controller('MainCtrl', ['$scope', 'synth', 'bufferLoader', 'audio', 'ke
         var synth = $scope.synth = new Synth(as.context());
         $scope.filter = {};
         $scope.sel = 'sine';
-        synth.setFilterF(100);
+        synth.setFilterF(1200);
 
         var active_osc = {};
 
